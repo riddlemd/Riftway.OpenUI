@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Riftway.OpenUI.Samples</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Shared\*.cs" Link="Shared\%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Riftway" />
+    <PackageReference Include="Riftway.Blazor" />
+    <PackageReference Include="OpenUI.Lang.Blazor.Mud" />
+    <PackageReference Include="Anthropic" />
+  </ItemGroup>
+
+  <!-- The runtime for the machine that builds it; publish for another with -r <rid>. -->
+  <ItemGroup>
+    <PackageReference Include="Riftway.Runtime.win-x64" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+    <PackageReference Include="Riftway.Runtime.linux-x64" Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
+    <PackageReference Include="Riftway.Runtime.osx-arm64" Condition="$([MSBuild]::IsOSPlatform('OSX')) And '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'" />
+    <PackageReference Include="Riftway.Runtime.osx-x64" Condition="$([MSBuild]::IsOSPlatform('OSX')) And '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' != 'Arm64'" />
+  </ItemGroup>
+
+</Project>

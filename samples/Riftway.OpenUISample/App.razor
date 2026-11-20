@@ -1,0 +1,55 @@
+@implements IDisposable
+@inject ChatSession Chat
+@inject SampleTools Data
+
+<MudThemeProvider />
+<MudPopoverProvider />
+
+<header class="bar">
+    <strong>Riftway + OpenUI</strong>
+    <span class="model">@Chat.ModelLabel</span>
+</header>
+
+<main class="thread">
+    @foreach (var turn in Chat.Turns)
+    {
+        if (turn.Role == "user")
+        {
+            <div class="turn user">@turn.Text</div>
+        }
+        else
+        {
+            <div class="turn reply">
+                <OpenUIProgram @key="turn" Chunks="@turn.Stream" Tools="@Data.Tools" OnHostEvent="@OnHostEvent" />
+                @if (turn.Failure is not null)
+                {
+                    <div class="failure">The model call failed: @turn.Failure</div>
+                }
+            </div>
+        }
+    }
+</main>
+
+<form class="composer" @onsubmit="SendAsync">
+    <input id="message" @bind="_draft" @bind:event="oninput" placeholder="Ask for a view of tonight's karaoke…" disabled="@Chat.Busy" />
+    <button type="submit" disabled="@(Chat.Busy || string.IsNullOrWhiteSpace(_draft))">Send</button>
+</form>
+
+@code {
+    private string _draft = "";
+
+    protected override void OnInitialized() => Chat.Changed += Redraw;
+
+    private void Redraw() => _ = InvokeAsync(StateHasChanged);
+
+    private async Task SendAsync()
+    {
+        var text = _draft;
+        _draft = "";
+        await Chat.SendAsync(text);
+    }
+
+    private Task OnHostEvent(OpenUIHostEvent e) => Chat.HandleHostEventAsync(e);
+
+    public void Dispose() => Chat.Changed -= Redraw;
+}

@@ -1,0 +1,18 @@
+<Project>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Authors>Michael Riddle</Authors>
+    <Copyright>Copyright (c) 2026 Michael Riddle</Copyright>
+    <RepositoryUrl>https://github.com/riddlemd/Riftway.OpenUI</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/riddlemd/Riftway.OpenUI</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+</Project>

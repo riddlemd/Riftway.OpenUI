@@ -1,0 +1,24 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Riftway -->
+    <PackageVersion Include="Riftway" Version="0.1.0-preview.2" />
+    <PackageVersion Include="Riftway.Blazor" Version="0.1.0-preview.2" />
+    <PackageVersion Include="Riftway.Runtime.win-x64" Version="0.1.0-preview.2" />
+    <PackageVersion Include="Riftway.Runtime.linux-x64" Version="0.1.0-preview.2" />
+    <PackageVersion Include="Riftway.Runtime.osx-arm64" Version="0.1.0-preview.2" />
+    <PackageVersion Include="Riftway.Runtime.osx-x64" Version="0.1.0-preview.2" />
+    <!-- OpenUI Lang: pinned exactly, the project is young and its API still moves. -->
+    <PackageVersion Include="OpenUI.Lang.Core" Version="[1.1.0]" />
+    <PackageVersion Include="OpenUI.Lang.Blazor" Version="[1.1.0]" />
+    <PackageVersion Include="OpenUI.Lang.Blazor.Mud" Version="[9.11.0]" />
+    <!-- Models -->
+    <PackageVersion Include="Anthropic" Version="13.12.0" />
+    <!-- Testing -->
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
+  </ItemGroup>
+</Project>

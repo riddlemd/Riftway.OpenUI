@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Riftway.OpenUI.Eval</RootNamespace>
+    <AssemblyName>OpenUIEval</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="OpenUIEval.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\samples\Shared\*.cs" Link="Shared\%(Filename)%(Extension)" />
+    <None Include="prompts.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenUI.Lang.Blazor.Mud" />
+    <PackageReference Include="Anthropic" />
+  </ItemGroup>
+
+</Project>
